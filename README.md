@@ -8,7 +8,7 @@ A focused React demo for opening the Razorpay test checkout with a validated INR
 
 - INR amount validation
 - Razorpay test checkout integration
-- Payment success and dismissal status
+- Test checkout response and dismissal status
 - Responsive fixed header, footer, and local branding
 - Icon-only external and support links
 

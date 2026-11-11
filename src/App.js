@@ -23,7 +23,7 @@ function App() {
     event.preventDefault();
     const numericAmount = Number(amount);
 
-    if (!numericAmount || numericAmount < 1) {
+    if (!Number.isFinite(numericAmount) || numericAmount < 1) {
       setStatus("Enter an amount of at least ₹1.");
       return;
     }
@@ -41,14 +41,8 @@ function App() {
       name: "Startup Projects",
       description: "Razorpay checkout demo",
       handler: (response) => {
-        setStatus(`Payment created: ${response.razorpay_payment_id}`);
+        setStatus(`Test checkout returned payment ID: ${response.razorpay_payment_id}`);
       },
-      prefill: {
-        name: "Ashish",
-        email: "ash.ranjan09@gmail.com",
-        contact: "8123747965",
-      },
-      notes: { address: "Bengaluru" },
       theme: { color: "#2563eb" },
       modal: { ondismiss: () => setStatus("Checkout closed.") },
     });
@@ -59,7 +53,7 @@ function App() {
     <div className="app-shell">
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Razorpay checkout home">
-          <img src="/logo.png" alt="Ashish Ranjan logo" />
+          <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Ashish Ranjan logo" />
           <span><small>A2RP</small>Razorpay Checkout</span>
         </a>
         <span className="header-note"><FiLock aria-hidden="true" /> Test mode</span>
